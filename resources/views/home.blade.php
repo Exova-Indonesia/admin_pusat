@@ -103,8 +103,8 @@
   <div class="col-md-3 col-sm-6">
   <div class="small-box bg-success">
     <div class="inner">
-      <h3>53<sup style="font-size: 20px">%</sup></h3>
-        <p>Bounce Rate</p>
+      <h3>{{ number_format(565345, 0) }}</h3>
+        <p>Pendapatan Total (IDR)</p>
           </div>
             <div class="icon">
               <i class="fa">&#xf200;</i>
@@ -137,7 +137,7 @@
   <div class="small-box bg-info">
     <div class="inner">
       <h3>53<sup style="font-size: 20px">%</sup></h3>
-        <p>Bounce Rate</p>
+        <p>Orderan Total</p>
           </div>
             <div class="icon">
               <i class="fa fa-cart-plus"></i>
