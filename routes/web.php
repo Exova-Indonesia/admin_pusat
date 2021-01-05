@@ -23,3 +23,9 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('ho
 Route::get('/', [App\Http\Controllers\JasaController::class, 'jasa_orders']);
 Route::get('modal-jasa/{id}', [App\Http\Controllers\JasaController::class, 'modals']);
 Route::get('modal-inv/{id}', [App\Http\Controllers\JasaController::class, 'modals_inv']);
+Route::get('/subscriptions', function() {
+    return view('/langganan');
+});
+Route::get('/users', function() {
+    return view('/pengguna');
+});

@@ -13,6 +13,8 @@
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="{{ asset('js/adminlte.min.js') }}" defer></script>
+    <script src="{{ asset('datatables/jquery.dataTables.js') }}" defer></script>
+    <script src="{{ asset('datatables-bs4/js/dataTables.bootstrap4.js') }}" defer></script>
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
@@ -21,6 +23,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/adminlte.min.css') }}" rel="stylesheet">
     <link href="{{ asset('fontawesome/css/all.min.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('datatables-bs4/css/dataTables.bootstrap4.css') }}">
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
 </head>
 <body  class="hold-transition sidebar-mini">

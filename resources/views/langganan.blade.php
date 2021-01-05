@@ -14,7 +14,7 @@
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column">
           <li class="nav-item">
-            <a href="/" class="nav-link active">
+            <a href="/" class="nav-link">
               <i class="nav-icon fas fa-home"></i>
               <p>
                 Dashboard
@@ -61,7 +61,8 @@
             </ul>
             <ul class="nav nav-pills nav-sidebar flex-column">
                 <li class="nav-item">
-                    <a href="/subscriptions" class="nav-link">
+                    <a href="/subscriptions" class="nav-link active
+                    ">
                     <i class="nav-icon fas fa-users"></i>
                     <p>
                         Data Langganan
@@ -110,88 +111,16 @@
   <div class="content-header">
   <div class="container-fluid">
   <div class="row">
-  <div class="col-md-3 col-sm-6">
-  <div class="small-box bg-success">
-    <div class="inner">
-      <h3>{{ number_format(565345, 0) }}</h3>
-        <p>Pendapatan Total (IDR)</p>
-          </div>
-            <div class="icon">
-              <i class="fa">&#xf200;</i>
-          </div>
-        </div>
-      </div>
-  <div class="col-md-3 col-sm-6">
-  <div class="small-box bg-danger">
-    <div class="inner">
-      <h3>53</h3>
-        <p>Users</p>
-          </div>
-            <div class="icon">
-              <i class="fas fa-user-plus"></i>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3 col-sm-6">
-  <div class="small-box bg-primary">
-    <div class="inner">
-      <h3>53</h3>
-        <p>Langganan</p>
-          </div>
-            <div class="icon">
-              <i class="fas fa-id-card"></i>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3 col-sm-6">
-  <div class="small-box bg-info">
-    <div class="inner">
-      <h3>53</h3>
-        <p>Orderan Total</p>
-          </div>
-            <div class="icon">
-              <i class="fa fa-cart-plus"></i>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6">
-      <div class="card-header bg-success">
-        <h3 class="card-title">Last Jasa Orders</h3>
-      </div>
-      <div class="table-responsive">
-          <table class="table table-bordered">
-            <thead>
-              <tr>
-              <th>Order ID</th>
-              <th>Order Buyer</th>
-              <th>Order Price</th>
-              <th>Order Status</th>
-              <th>Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              @foreach($jasa_orders as $jo)
-              <tr>
-              <td>{{ $jo->jasa_order_id }}</td>
-              <td>{{ $jo->users_orders['name'] }}</td>
-              <td>IDR {{ number_format($jo->users_orders_details['jasa_order_price'], 0) }}</td>
-              <td>{{ $jo->jasa_order_status }}</td>
-              <td><span type="button" class="text-white badge badge-success pointer-cursor" data-toggle="modal" data-target="#exampleModal" data-jasa_order_id="{{ $jo->jasa_order_id }}">
-                <i class="fa fa-eye"></i>
-                  </span>
-              </td>
-              </tr>
-              @endforeach
-            </tbody>
-          </table>
-        </div>
-        </div>
-        <div class="col-md-6">
+      <div class="col-md-12">
+      <p class="text-right">
+        <a class="btn btn-success text-white">Export Data</a>
+      </p>
+      <div class="card">
       <div class="card-header bg-primary">
-        <h3 class="card-title">Last Invitations Orders</h3>
+        <h3 class="card-title">Subscriptions</h3>
       </div>
-      <div class="table-responsive">
-          <table class="table table-bordered">
+      <div class="card-body table-responsive">
+          <table class="table table-bordered" id="datatables">
             <thead>
               <tr>
               <th>Order ID</th>
@@ -202,40 +131,28 @@
               </tr>
             </thead>
             <tbody>
-              @foreach($inv_orders as $jo)
+              
               <tr>
-              <td>{{ $jo->inv_order_id }}</td>
-              <td>{{ $jo->users_inv_orders['name'] }}</td>
-              <td>IDR {{ number_format($jo->inv_orders_details['inv_order_price'], 0) }}</td>
-              <td>{{ $jo->inv_order_status }}</td>
-              <td><span type="button" class="text-white badge badge-success pointer-cursor" data-toggle="modal" data-target="#exampleInv" data-inv_order_id="{{ $jo->inv_order_id }}">
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td><span type="button" class="text-white badge badge-success pointer-cursor" data-toggle="modal" data-target="#exampleModal" data-jasa_order_id="">
                 <i class="fa fa-eye"></i>
                   </span>
               </td>
               </tr>
-              @endforeach
+             
             </tbody>
           </table>
         </div>
         </div>
+        </div>
     </div>
   </div>
 </div>
 </div>
-<div class="modal fade bd-example-modal-lg" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Order Jasa Details</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body jasa">
-      </div>
-    </div>
-  </div>
-</div>
+
 
 <div class="modal fade bd-example-modal-lg" id="exampleInv" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg" role="document">
@@ -253,31 +170,7 @@
 </div>
 <script>
   $(document).ready(function() {
-    $('#exampleModal').on('show.bs.modal', function (event) {
-    var button = $(event.relatedTarget)
-    var recipient = button.data('jasa_order_id')
-    var name = button.data('name')
-    $.ajaxSetup({ headers: { '_token' : '' } });
-
-    $.ajax({
-      url:"{{ url('/modal-jasa') }}/"+recipient,
-      type:'GET',
-      dataType:'html',
-      success:function(data){
-        $(".jasa").html(data);
-      },
-      beforeSend:function() {
-        $(".jasa").html("Sedang Memuat...");
-      },
-        error:function() {
-          $(".jasa").html("Terjadi Kesalahan...");
-      }
-    });
-    
-    var modal = $(this)
-    modal.find('.modal-title').text(name)
-})
-$('#exampleInv').on('show.bs.modal', function (event) {
+    $('#exampleInv').on('show.bs.modal', function (event) {
     var button = $(event.relatedTarget)
     var recipient = button.data('inv_order_id')
     var name = button.data('name')
@@ -302,5 +195,9 @@ $('#exampleInv').on('show.bs.modal', function (event) {
     modal.find('.modal-title').text(name)
 })
 });
+
+$(function() {
+    $('#datatables').DataTable();
+})
 </script>
 @endsection
