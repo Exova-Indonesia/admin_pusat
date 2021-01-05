@@ -11,7 +11,7 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
-    <script src="{{ asset('jquery/jquery.min.js') }}" defer></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="{{ asset('js/adminlte.min.js') }}" defer></script>
 
     <!-- Fonts -->
@@ -135,7 +135,7 @@
   </nav>
 </div>
   <!-- /.navbar -->
-        <main class="py-4">
+        <main>
             @yield('content')
         </main>
     </div>

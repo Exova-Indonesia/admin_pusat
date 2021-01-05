@@ -136,7 +136,7 @@
       <div class="col-md-3 col-sm-6">
   <div class="small-box bg-info">
     <div class="inner">
-      <h3>53<sup style="font-size: 20px">%</sup></h3>
+      <h3>53</h3>
         <p>Orderan Total</p>
           </div>
             <div class="icon">
@@ -144,8 +144,82 @@
           </div>
         </div>
       </div>
+      <div class="col-md-6">
+      <div class="card-header bg-success">
+        <h3 class="card-title">Last Jasa Orders</h3>
+      </div>
+      <div class="table-responsive">
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+              <th>Order Name</th>
+              <th>Order Buyer</th>
+              <th>Order Price</th>
+              <th>Order Status</th>
+              <th>Action</th>
+              <tr>
+            </thead>
+            <tbody>
+              @foreach($jasa_orders as $jo)
+              <tr>
+              <td>{{ $jo->portofolio_name }}</td>
+              <td>{{ $jo->users_orders['name'] }}</td>
+              <td>IDR {{ number_format($jo->users_orders_details['jasa_order_price'], 0) }}</td>
+              <td>{{ $jo->jasa_order_status }}</td>
+              <td><span type="button" class="text-white badge badge-success pointer-cursor" data-toggle="modal" data-target="#exampleModal" data-jasa_order_id="{{ $jo->jasa_order_id }}">
+                <i class="fa fa-eye"></i>
+                  </span>
+              </td>
+              </tr>
+              @endforeach
+            </tbody>
+          </table>
+        </div>
+        </div>
     </div>
   </div>
 </div>
 </div>
+<div class="modal fade bd-example-modal-lg" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Order Details</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  $(document).ready(function() {
+    $('#exampleModal').on('show.bs.modal', function (event) {
+    var button = $(event.relatedTarget) // Button that triggered the modal
+    var recipient = button.data('jasa_order_id')
+    var name = button.data('name')
+    $.ajaxSetup({ headers: { '_token' : '' } });
+
+    $.ajax({
+      url:"{{ url('/modal-jasa') }}/"+recipient,
+      type:'GET',
+      dataType:'html',
+      success:function(data){
+        $(".modal-body").html(data);
+      },
+      beforeSend:function() {
+        $(".modal-body").html("Sedang Memuat...");
+      },
+        error:function() {
+          $(".modal-body").html("Terjadi Kesalahan...");
+      }
+    });
+    
+    var modal = $(this)
+    modal.find('.modal-title').text(name)
+})
+});
+</script>
 @endsection

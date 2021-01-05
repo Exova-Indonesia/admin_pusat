@@ -20,3 +20,5 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [App\Http\Controllers\JasaController::class, 'jasa_orders']);
+Route::get('modal-jasa/{id}', [App\Http\Controllers\JasaController::class, 'modals']);
