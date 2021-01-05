@@ -31,10 +31,6 @@
             <td>{{ date('F j, Y H:i a', strtotime($jo->jasa_order_deadline)) }}</td>
         </tr>
         <tr>
-            <td>Payment Type </td>
-            <td></td>
-        </tr>
-        <tr>
             <td>Order Price </td>
             <td>IDR {{ number_format($jo->users_orders_details['jasa_order_price'], 0) }}</td>
         </tr>
@@ -53,6 +49,14 @@
         <tr>
             <td>Order Status </td>
             <td>{{ $jo->jasa_order_status }}</td>
+        </tr>
+        <tr>
+            <td>Payment Type</td>
+            <td>{{ $jo->jasa_payment_type }}</td>
+        </tr>
+        <tr>
+            <td>Payment Status</td>
+            <td></{{ $jo->users_orders_details['jasa_payment_status'] }}td>
         </tr>
         @endforeach
     </tbody>

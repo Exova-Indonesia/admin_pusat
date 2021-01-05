@@ -152,21 +152,53 @@
           <table class="table table-bordered">
             <thead>
               <tr>
-              <th>Order Name</th>
+              <th>Order ID</th>
               <th>Order Buyer</th>
               <th>Order Price</th>
               <th>Order Status</th>
               <th>Action</th>
-              <tr>
+              </tr>
             </thead>
             <tbody>
               @foreach($jasa_orders as $jo)
               <tr>
-              <td>{{ $jo->portofolio_name }}</td>
+              <td>{{ $jo->jasa_order_id }}</td>
               <td>{{ $jo->users_orders['name'] }}</td>
               <td>IDR {{ number_format($jo->users_orders_details['jasa_order_price'], 0) }}</td>
               <td>{{ $jo->jasa_order_status }}</td>
               <td><span type="button" class="text-white badge badge-success pointer-cursor" data-toggle="modal" data-target="#exampleModal" data-jasa_order_id="{{ $jo->jasa_order_id }}">
+                <i class="fa fa-eye"></i>
+                  </span>
+              </td>
+              </tr>
+              @endforeach
+            </tbody>
+          </table>
+        </div>
+        </div>
+        <div class="col-md-6">
+      <div class="card-header bg-primary">
+        <h3 class="card-title">Last Invitations Orders</h3>
+      </div>
+      <div class="table-responsive">
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+              <th>Order ID</th>
+              <th>Order Buyer</th>
+              <th>Order Price</th>
+              <th>Order Status</th>
+              <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              @foreach($inv_orders as $jo)
+              <tr>
+              <td>{{ $jo->inv_order_id }}</td>
+              <td>{{ $jo->users_inv_orders['name'] }}</td>
+              <td>IDR {{ number_format($jo->inv_orders_details['inv_order_price'], 0) }}</td>
+              <td>{{ $jo->inv_order_status }}</td>
+              <td><span type="button" class="text-white badge badge-success pointer-cursor" data-toggle="modal" data-target="#exampleInv" data-inv_order_id="{{ $jo->inv_order_id }}">
                 <i class="fa fa-eye"></i>
                   </span>
               </td>
@@ -184,12 +216,27 @@
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Order Details</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Order Jasa Details</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
+      <div class="modal-body jasa">
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade bd-example-modal-lg" id="exampleInv" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Order Invitations Details</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body invitations">
       </div>
     </div>
   </div>
@@ -197,7 +244,7 @@
 <script>
   $(document).ready(function() {
     $('#exampleModal').on('show.bs.modal', function (event) {
-    var button = $(event.relatedTarget) // Button that triggered the modal
+    var button = $(event.relatedTarget)
     var recipient = button.data('jasa_order_id')
     var name = button.data('name')
     $.ajaxSetup({ headers: { '_token' : '' } });
@@ -207,13 +254,37 @@
       type:'GET',
       dataType:'html',
       success:function(data){
-        $(".modal-body").html(data);
+        $(".jasa").html(data);
       },
       beforeSend:function() {
-        $(".modal-body").html("Sedang Memuat...");
+        $(".jasa").html("Sedang Memuat...");
       },
         error:function() {
-          $(".modal-body").html("Terjadi Kesalahan...");
+          $(".jasa").html("Terjadi Kesalahan...");
+      }
+    });
+    
+    var modal = $(this)
+    modal.find('.modal-title').text(name)
+})
+$('#exampleInv').on('show.bs.modal', function (event) {
+    var button = $(event.relatedTarget)
+    var recipient = button.data('inv_order_id')
+    var name = button.data('name')
+    $.ajaxSetup({ headers: { '_token' : '' } });
+
+    $.ajax({
+      url:"{{ url('/modal-inv') }}/"+recipient,
+      type:'GET',
+      dataType:'html',
+      success:function(data){
+        $(".invitations").html(data);
+      },
+      beforeSend:function() {
+        $(".invitations").html("Sedang Memuat...");
+      },
+        error:function() {
+          $(".invitations").html("Terjadi Kesalahan...");
       }
     });
     
