@@ -4,7 +4,7 @@
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link">
+    <a href="" class="brand-link">
       <img src="https://assets.exova.id/img/1.png" alt="Exova Indonesia" class="brand-image img-circle elevation-3"
            style="opacity: .8">
       <span class="brand-text font-weight-light">Exova Indonesia</span>
@@ -81,7 +81,7 @@
             </ul>
             <ul class="nav nav-pills nav-sidebar flex-column">
                 <li class="nav-item">
-                    <a href="/blogs" class="nav-link">
+                    <a href="/blog" class="nav-link">
                     <i class="nav-icon fas fa-edit"></i>
                     <p>
                         Blogs
@@ -113,7 +113,7 @@
   <div class="col-md-3 col-sm-6">
   <div class="small-box bg-success">
     <div class="inner">
-      <h3>{{ number_format(565345, 0) }}</h3>
+      <h3>{{ number_format($revenue, 0) }}</h3>
         <p>Pendapatan Total (IDR)</p>
           </div>
             <div class="icon">
@@ -124,7 +124,7 @@
   <div class="col-md-3 col-sm-6">
   <div class="small-box bg-danger">
     <div class="inner">
-      <h3>53</h3>
+      <h3>{{ $users }}</h3>
         <p>Users</p>
           </div>
             <div class="icon">
@@ -135,7 +135,7 @@
       <div class="col-md-3 col-sm-6">
   <div class="small-box bg-primary">
     <div class="inner">
-      <h3>53</h3>
+      <h3>{{ $subs }}</h3>
         <p>Langganan</p>
           </div>
             <div class="icon">
@@ -146,7 +146,7 @@
       <div class="col-md-3 col-sm-6">
   <div class="small-box bg-info">
     <div class="inner">
-      <h3>53</h3>
+      <h3>{{ $jasa_count }}</h3>
         <p>Orderan Total</p>
           </div>
             <div class="icon">

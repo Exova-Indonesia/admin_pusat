@@ -4,7 +4,7 @@
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link">
+    <a href="" class="brand-link">
       <img src="https://assets.exova.id/img/1.png" alt="Exova Indonesia" class="brand-image img-circle elevation-3"
            style="opacity: .8">
       <span class="brand-text font-weight-light">Exova Indonesia</span>
@@ -82,7 +82,7 @@
             </ul>
             <ul class="nav nav-pills nav-sidebar flex-column">
                 <li class="nav-item">
-                    <a href="/blogs" class="nav-link">
+                    <a href="/blog" class="nav-link">
                     <i class="nav-icon fas fa-edit"></i>
                     <p>
                         Blogs
@@ -123,26 +123,28 @@
           <table class="table table-bordered" id="datatables">
             <thead>
               <tr>
-              <th>Order ID</th>
-              <th>Order Buyer</th>
-              <th>Order Price</th>
-              <th>Order Status</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Phone</th>
+              <th>Address</th>
+              <th>Subscription End</th>
               <th>Action</th>
               </tr>
             </thead>
             <tbody>
-              
-              <tr>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td><span type="button" class="text-white badge badge-success pointer-cursor" data-toggle="modal" data-target="#exampleModal" data-jasa_order_id="">
+              @foreach($subs as $s)
+            <tr>
+              <td>{{ $s->name }}</td>
+              <td>{{ $s->email }}</td>
+              <td>{{ $s->phone }}</td>
+              <td>{{ $s->address }}</td>
+              <td>{{ $s->subscription_end }}</td>
+              <td><span type="button" class="text-white badge badge-success pointer-cursor" data-toggle="modal" data-target="#exampleModal" data-jasa_order_id="$s->id">
                 <i class="fa fa-eye"></i>
                   </span>
               </td>
-              </tr>
-             
+            </tr>
+             @endforeach
             </tbody>
           </table>
         </div>
