@@ -13,14 +13,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+Route::get('/welcome', function () {
     return view('welcome');
 });
 
 Auth::routes();
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/', [App\Http\Controllers\JasaController::class, 'jasa_orders']);
+// Route::get('/', [App\Http\Controllers\JasaController::class, 'jasa_orders']);
 
 Route::get('modal-jasa/{id}', [App\Http\Controllers\JasaController::class, 'modals']);
 Route::get('modal-inv/{id}', [App\Http\Controllers\JasaController::class, 'modals_inv']);

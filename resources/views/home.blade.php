@@ -113,7 +113,7 @@
   <div class="col-md-3 col-sm-6">
   <div class="small-box bg-success">
     <div class="inner">
-      <h3>{{ number_format($revenue, 0) }}</h3>
+      <h3>{{ number_format($revenue ?? 0, 0) }}</h3>
         <p>Pendapatan Total (IDR)</p>
           </div>
             <div class="icon">
@@ -135,7 +135,7 @@
       <div class="col-md-3 col-sm-6">
   <div class="small-box bg-primary">
     <div class="inner">
-      <h3>{{ $subs }}</h3>
+      <h3>{{ $subs ?? 0 }}</h3>
         <p>Langganan</p>
           </div>
             <div class="icon">
@@ -146,7 +146,7 @@
       <div class="col-md-3 col-sm-6">
   <div class="small-box bg-info">
     <div class="inner">
-      <h3>{{ $jasa_count }}</h3>
+      <h3>{{ $jasa_count ?? 0}}</h3>
         <p>Orderan Total</p>
           </div>
             <div class="icon">
@@ -154,70 +154,6 @@
           </div>
         </div>
       </div>
-      <div class="col-md-6">
-      <div class="card-header bg-success">
-        <h3 class="card-title">Last Jasa Orders</h3>
-      </div>
-      <div class="table-responsive">
-          <table class="table table-bordered">
-            <thead>
-              <tr>
-              <th>Order ID</th>
-              <th>Order Buyer</th>
-              <th>Order Price</th>
-              <th>Order Status</th>
-              <th>Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              @foreach($jasa_orders as $jo)
-              <tr>
-              <td>{{ $jo->jasa_order_id }}</td>
-              <td>{{ $jo->users_orders['name'] }}</td>
-              <td>IDR {{ number_format($jo->users_orders_details['jasa_order_price'], 0) }}</td>
-              <td>{{ $jo->jasa_order_status }}</td>
-              <td><span type="button" class="text-white badge badge-success pointer-cursor" data-toggle="modal" data-target="#exampleModal" data-jasa_order_id="{{ $jo->jasa_order_id }}">
-                <i class="fa fa-eye"></i>
-                  </span>
-              </td>
-              </tr>
-              @endforeach
-            </tbody>
-          </table>
-        </div>
-        </div>
-        <div class="col-md-6">
-      <div class="card-header bg-primary">
-        <h3 class="card-title">Last Invitations Orders</h3>
-      </div>
-      <div class="table-responsive">
-          <table class="table table-bordered">
-            <thead>
-              <tr>
-              <th>Order ID</th>
-              <th>Order Buyer</th>
-              <th>Order Price</th>
-              <th>Order Status</th>
-              <th>Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              @foreach($inv_orders as $jo)
-              <tr>
-              <td>{{ $jo->inv_order_id }}</td>
-              <td>{{ $jo->users_inv_orders['name'] }}</td>
-              <td>IDR {{ number_format($jo->inv_orders_details['inv_order_price'], 0) }}</td>
-              <td>{{ $jo->inv_order_status }}</td>
-              <td><span type="button" class="text-white badge badge-success pointer-cursor" data-toggle="modal" data-target="#exampleInv" data-inv_order_id="{{ $jo->inv_order_id }}">
-                <i class="fa fa-eye"></i>
-                  </span>
-              </td>
-              </tr>
-              @endforeach
-            </tbody>
-          </table>
-        </div>
-        </div>
     </div>
   </div>
 </div>
