@@ -13,7 +13,7 @@
       </p>
       <div class="card">
       <div class="card-header bg-danger">
-        <h3 class="card-title text-center">Karyawan</h3>
+        <h3 class="card-title text-center">Seler</h3>
       </div>
       <div class="card-body table-responsive">
           <table class="table table-bordered" id="datatables">
@@ -24,7 +24,7 @@
               <th>Email</th>
               <th>Phone</th>
               <th>Address</th>
-              <th>Jabatan</th>
+              <th>Jumlah Jasa</th>
               <th>Action</th>
               </tr>
             </thead>
@@ -105,32 +105,6 @@
     </div>
   </div>
 </div>
-  <!-- Content Wrapper. Contains page content -->
-<div class="content-wrapper bg-white">
-    <div class="content-header">
-        <div class="container-fluid">
-            <div class="row">
-              @foreach($jobs as $j)
-                <div class="col-md-4">
-                    <div class="card text-center">
-                        <div class="card-header bg-danger">
-                            {{ $j->level }}
-                        </div>
-                        <div class="card-body">
-                            <div class="card-title float-none">
-                                <img class="mb-2 rounded-circle img-profil" width="120px" height="120px" src="{{ $j->picture }}" alt="Profil Picture">
-                                <h5 class="text-capitalize">{{ $j->name }}</h5>
-                            </div>
-                            <p class="card-text">{{ $j->bio }}</p>
-                            <a href="#" class="btn btn-danger">View Details</a>
-                        </div>
-                    </div>
-                </div>
-              @endforeach
-            </div>
-        </div>
-    </div>
-</div>
 
 <script>
     $(function() {
@@ -139,3 +113,4 @@
 </script>
 </script>
 @endsection
+

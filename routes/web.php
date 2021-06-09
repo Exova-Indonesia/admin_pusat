@@ -22,6 +22,10 @@ Auth::routes();
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 // Route::get('/', [App\Http\Controllers\JasaController::class, 'jasa_orders']);
 
+Route::get('/seler', [App\Http\Controllers\SelerController::class, 'seler'])->name('seler');
+Route::get('/karyawan', [App\Http\Controllers\KaryawanController::class, 'karyawan'])->name('karyawan');
+
+
 Route::get('modal-jasa/{id}', [App\Http\Controllers\JasaController::class, 'modals']);
 Route::get('modal-inv/{id}', [App\Http\Controllers\JasaController::class, 'modals_inv']);
 
