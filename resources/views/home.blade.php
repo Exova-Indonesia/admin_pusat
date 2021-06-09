@@ -40,12 +40,6 @@
                   <p>Jasa Exova</p>
                 </a>
               </li>
-              <li class="nav-item">
-                <a href="/invitationsexova" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Exova Undangan Online</p>
-                </a>
-              </li>
             </ul>
           </li>
         </ul>
@@ -136,7 +130,7 @@
   <div class="small-box bg-primary">
     <div class="inner">
       <h3>{{ $subs ?? 0 }}</h3>
-        <p>Langganan</p>
+        <p>Seller</p>
           </div>
             <div class="icon">
               <i class="fas fa-id-card"></i>
@@ -157,7 +151,33 @@
     </div>
   </div>
 </div>
+<!-- Table -->
+<div class="card-body table-responsive">
+  <h5 class="text-center">Table Order</h5>
+    <table class="table table-bordered" id="datatables">
+      <thead class="">
+        <tr>
+        <th>Order Id</th>
+        <th>Customer</th>
+        <th>Seller</th>
+        <th>Harga</th>
+        <th>Tanggal</th>
+        </tr>
+      </thead>
+      <tbody>
+
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
+
 <div class="modal fade bd-example-modal-lg" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
@@ -173,7 +193,7 @@
   </div>
 </div>
 
-<div class="modal fade bd-example-modal-lg" id="exampleInv" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- <div class="modal fade bd-example-modal-lg" id="exampleInv" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -186,8 +206,8 @@
       </div>
     </div>
   </div>
-</div>
-<script>
+</div> -->
+<!-- <script>
   $(document).ready(function() {
     $('#exampleModal').on('show.bs.modal', function (event) {
     var button = $(event.relatedTarget)
@@ -209,7 +229,7 @@
           $(".jasa").html("Terjadi Kesalahan...");
       }
     });
-    
+
     var modal = $(this)
     modal.find('.modal-title').text(name)
 })
@@ -233,10 +253,16 @@ $('#exampleInv').on('show.bs.modal', function (event) {
           $(".invitations").html("Terjadi Kesalahan...");
       }
     });
-    
+
     var modal = $(this)
     modal.find('.modal-title').text(name)
 })
 });
+</script> -->
+<script>
+$(function() {
+    $('#datatables').DataTable();
+})
 </script>
+
 @endsection

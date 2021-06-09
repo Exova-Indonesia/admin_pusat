@@ -36,4 +36,9 @@ class JasaController extends Controller
         $inv_orders = Inv::with(['inv_orders_details', 'users_inv_orders'])->find([$id]);
         return view('modal.modal-inv', ['inv_orders' => $inv_orders]);
     }
+    public function index()
+    {
+      // code...
+      return view("jasa");
+    }
 }
