@@ -19,8 +19,10 @@ Route::get('/welcome', function () {
 
 Auth::routes();
 
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/jasaexova', [App\Http\Controllers\JasaController::class, 'index'])->name('jasa');
+Route::get('/', [App\Http\Controllers\OrderController::class, 'index'])->name('order');
+// Route::get('/user', 'WebRelasi@index');
 // Route::get('/', [App\Http\Controllers\JasaController::class, 'jasa_orders']);
 
 Route::get('modal-jasa/{id}', [App\Http\Controllers\JasaController::class, 'modals']);
