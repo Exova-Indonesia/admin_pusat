@@ -169,14 +169,16 @@
         </tr>
       </thead>
       <tbody>
-
+          @foreach($order as $a)
       <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td>{{ $a->order_id }}</td>
+        <td>{{ $a->pengguna['name']}}</td>
+        <td>{{$a->seller['name']}}</td>
+        <td>{{"Rp". number_format($a->harga,2,',','.')}}</td>
+          <td>{{ date_format(date_create($a->created_at),"M,d,Y H:i:a")
+        }}</td>
       </tr>
+      @endforeach
       </tbody>
     </table>
   </div>
