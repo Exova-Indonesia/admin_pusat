@@ -13,7 +13,7 @@
       </p>
       <div class="card">
       <div class="card-header bg-danger">
-        <h3 class="card-title text-center">Seler</h3>
+        <h3 class="card-title">Seler</h3>
       </div>
       <div class="card-body table-responsive">
           <table class="table table-bordered" id="datatables">
@@ -29,13 +29,14 @@
               </tr>
             </thead>
             <tbody>
+            @foreach($seler as $s)
             <tr>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
+              <td>{{ $s->id}}</td>
+              <td>{{ $s->nama}}</td>
+              <td>{{ $s->email}}</td>
+              <td>{{ $s->phone}}</td>
+              <td>{{ $s->addres}}</td>
+              <td>{{ $s->jumlah_jasa}}</td>
               <td>
                 <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#suspend" 
                   data-email="" data-name="">
@@ -47,6 +48,7 @@
                 </button>
               </td>
             </tr>
+            @endforeach
           
             </tbody>
           </table>
